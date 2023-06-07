@@ -29,7 +29,9 @@ const MessageList: React.FC = () => {
             <FlatList
                 data={messages}
                 renderItem={renderItem}
-                keyExtractor={(item) => (item.date.toString())}
+                keyExtractor={(item) =>
+                    item.text + item.date.getUTCMilliseconds().toString()
+                }
             />
         </View>
     );
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
     },
 });
 
