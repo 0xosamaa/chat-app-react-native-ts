@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -5,13 +6,29 @@ import {
     TextInput,
     TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+
+import socket from '../socket';
 
 const MessageForm = () => {
+    const [messageText, setMessageText] = useState('');
+
+    const handleSend = () => {
+        socket.emit('message', messageText);
+        setMessageText('');
+    };
+
+    const handleInput = (text: string) => {
+        setMessageText(text);
+    };
+
     return (
         <View style={styles.container}>
-            <TextInput style={styles.textInput} />
-            <TouchableOpacity style={styles.button}>
+            <TextInput
+                style={styles.textInput}
+                onChangeText={handleInput}
+                value={messageText}
+            />
+            <TouchableOpacity style={styles.button} onPress={handleSend}>
                 <Text>Send</Text>
             </TouchableOpacity>
         </View>
@@ -20,7 +37,6 @@ const MessageForm = () => {
 
 const styles = StyleSheet.create({
     container: {
-        width: '40vw',
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 20,
@@ -42,4 +58,5 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
 });
+
 export default MessageForm;

@@ -6,10 +6,10 @@ const Message: React.FC<IMessageProps> = ({ message }) => {
     return (
         <View style={styles.message}>
             <View>
-                <Text>{message.text}</Text>
+                <Text>{message.sender}</Text>
             </View>
             <View>
-                <Text>{message.sender}</Text>
+                <Text>{message.text}</Text>
             </View>
             <View>
                 <Text>{message.date.toLocaleString()}</Text>
@@ -20,12 +20,12 @@ const Message: React.FC<IMessageProps> = ({ message }) => {
 
 const styles = StyleSheet.create({
     message: {
-        width: '40vw',
+        width: '100%',
         flex: 1,
         flexDirection: 'row',
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
     },
 });
 
