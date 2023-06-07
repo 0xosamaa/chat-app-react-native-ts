@@ -1,4 +1,5 @@
 interface IMessage {
+    id: number;
     text: string;
     sender: string;
     date: Date;
