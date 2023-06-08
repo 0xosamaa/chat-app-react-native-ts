@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -7,13 +7,21 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/Ionicons';
 import socket from '../socket';
 
-const MessageForm = () => {
+const MessageForm = ({sender}) => {
     const [messageText, setMessageText] = useState('');
+    const textInputRef = useRef<TextInput>(null);
 
     const handleSend = () => {
-        socket.emit('message', messageText);
+        textInputRef.current?.focus();
+
+        if (messageText.length == 0) return;
+
+        console.log({sender, messageText});
+        
+        socket.emit('message', {sender, messageText});
         setMessageText('');
     };
 
@@ -24,12 +32,15 @@ const MessageForm = () => {
     return (
         <View style={styles.container}>
             <TextInput
+                ref={textInputRef}
                 style={styles.textInput}
                 onChangeText={handleInput}
                 value={messageText}
             />
             <TouchableOpacity style={styles.button} onPress={handleSend}>
-                <Text>Send</Text>
+                <Text>
+                    <Icon name="ios-send" size={20} color="#fff" />
+                </Text>
             </TouchableOpacity>
         </View>
     );
@@ -42,20 +53,32 @@ const styles = StyleSheet.create({
         marginTop: 20,
     },
     textInput: {
-        paddingTop: 10,
-        paddingBottom: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
         paddingLeft: 20,
         paddingRight: 20,
-        borderColor: 'gray',
-        borderWidth: 1,
+        width: '80%',
+        borderRadius: 100,
+        backgroundColor: '#fff',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 4,
+        elevation: 4,
     },
     button: {
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
+        padding: 10,
+        marginLeft: 5,
+        marginRight: 5,
         borderColor: 'gray',
-        borderWidth: 1,
+        borderRadius: 100,
+        textAlign: 'center',
+        backgroundColor: '#4CA587',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.5,
+        shadowRadius: 4,
+        elevation: 4,
     },
 });
 

@@ -1,18 +1,25 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
-import { IMessage, IMessageProps } from '../Models';
+import { IMessageProps } from '../Models';
 
-const Message: React.FC<IMessageProps> = ({ message }) => {
+const Message: React.FC<IMessageProps> = ({ message, sender }) => {
     return (
-        <View style={styles.message}>
-            <View>
-                <Text>{message.sender}</Text>
+        <View
+            style={{
+                ...styles.message,
+                alignSelf:
+                    message.sender === sender ? 'flex-end' : 'flex-start',
+                backgroundColor: message.sender === sender ? '#EBFEDE' : '#fff',
+            }}
+        >
+            <View style={styles.senderContainer}>
+                <Text style={styles.sender}>{message.sender}</Text>
             </View>
-            <View>
-                <Text>{message.text}</Text>
-            </View>
-            <View>
-                <Text>{message.date.toLocaleString()}</Text>
+            <View style={styles.textContainer}>
+                <Text style={styles.text}>{message.text}</Text>
+                <Text style={styles.date}>
+                    {message.date.toLocaleTimeString()}
+                </Text>
             </View>
         </View>
     );
@@ -20,12 +27,35 @@ const Message: React.FC<IMessageProps> = ({ message }) => {
 
 const styles = StyleSheet.create({
     message: {
-        width: '100%',
-        flex: 1,
-        flexDirection: 'row',
+        maxWidth: '100%',
         backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'space-around',
+        alignSelf: 'flex-start',
+        borderRadius: 20,
+        padding: 5,
+        margin: 10,
+    },
+    senderContainer: {
+        width: '100%',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    textContainer: {
+        width: '100%',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        paddingLeft: 20,
+        paddingRight: 20,
+    },
+    sender: { fontSize: 12, fontWeight: 'bold' },
+    text: {
+        width: '100%',
+    },
+    date: {
+        width: '100%',
+        alignSelf: 'flex-end',
+        fontSize: 12,
     },
 });
 
