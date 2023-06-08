@@ -4,14 +4,11 @@ const io = require('socket.io')(server, {
     cors: '*',
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 
 io.on('connection', (socket: any) => {
-    socket.on('message', (message: string) => {
-        console.log(message);
-        io.emit('message',
-            `${message}`
-        );
+    socket.on('message', (message: any) => {
+        io.emit('message', message);
     });
 });
 
