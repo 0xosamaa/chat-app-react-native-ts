@@ -57,9 +57,15 @@ $ expo start
 ### Important
 In order to have a connection to the server make sure you change the local IP address in socket.js in the client directory to your local machine's local IP address run the following command to get your WIFI connected IPV4 address:
 
+Windows:
 ```sh
 $ ipconfig
 ```
+Linux:
+```sh
+$ ifconfig
+```
+
 Change the following line in socket.js to your IPV4 address:
 
 ```ts
