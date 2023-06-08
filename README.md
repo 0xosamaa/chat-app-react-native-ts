@@ -18,7 +18,7 @@ Also make sure you have [Expo CLI](https://www.npmjs.com/package/expo-cli) insta
 
 
 ```sh
-$ npm -v && node -v
+$ expo-cli --version
 
 ```
 ## Getting Started
