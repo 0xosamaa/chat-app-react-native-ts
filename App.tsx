@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         paddingLeft: 20,
         backgroundColor: '#4CA587',
-        position: 'absolute'
+        position: 'absolute',
     },
     main: {
         width: '100%',
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     textInput: {
-        paddingTop: 20,
-        paddingBottom: 20,
+        paddingTop: 10,
+        paddingBottom: 10,
         paddingLeft: 20,
         paddingRight: 20,
         width: '80%',
