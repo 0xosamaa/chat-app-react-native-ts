@@ -39,7 +39,7 @@ const App: React.FC = () => {
             {!validSender && (
                 <View style={{ ...styles.main, justifyContent: 'center' }}>
                     <View>
-                        <Text style={{ fontSize: 40, alignSelf: 'flex-start' }}>
+                        <Text style={{ fontSize: 30, alignSelf: 'flex-start' }}>
                             Enter Your Name
                         </Text>
                     </View>
