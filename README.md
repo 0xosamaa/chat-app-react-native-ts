@@ -41,6 +41,12 @@ $ npm install
 ## Usage
 Now that you have 2 folders, 1 for the client and 1 for the server you need to have 1 command line interface for each directory and have the following commands running simultaneously:
 
+### Serving the server app
+
+
+```sh
+$ npm start
+```
 ### Serving the client app
 
 
@@ -48,12 +54,6 @@ Now that you have 2 folders, 1 for the client and 1 for the server you need to h
 $ expo start
 ```
 
-### Serving the server app
-
-
-```sh
-$ npm start
-```
 ### Important
 In order to have a connection to the server make sure you change the local IP address in socket.js in the client directory to your local machine's local IP address run the following command to get your WIFI connected IPV4 address:
 
