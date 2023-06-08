@@ -39,7 +39,7 @@ To install and set up the libraries, run for each of the 2 repos:
 $ npm install
 ```
 ## Usage
-Now that you have 2 folders, 1 for the client and 1 for the server you need to have 1 command line interfaces for each directory and have the following commands running simultaneously:
+Now that you have 2 folders, 1 for the client and 1 for the server you need to have 1 command line interface for each directory and have the following commands running simultaneously:
 
 ### Serving the client app
 
